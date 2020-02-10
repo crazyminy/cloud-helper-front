@@ -2,6 +2,7 @@ import React,{useState,useRef} from 'react';
 import {Layout, Button,Modal,message} from 'antd';
 const {Header,Content,Footer} = Layout;
 import '../style/imgBed.less';
+import ProgressDemo from '../components/ProgressDemo';
 export default function ImgBed(){
     const [modalVisible,setModalVisible] = useState(false);
     const [tempSaveImgList,setTempSaveImgList] = useState([]);
@@ -49,7 +50,10 @@ export default function ImgBed(){
                 <div className="opsArea">
                     <Button onClick={()=>setModalVisible(true)}>上传图片</Button>
                 </div>
-                <div className="imgsArea">imgs Area</div>
+                <div className="imgsArea">
+                    imgs Area
+                    <ProgressDemo/>
+                </div>
             </Content>
             <Footer style={{textAlign:"center"}}>developed by crazyminy</Footer>
 
