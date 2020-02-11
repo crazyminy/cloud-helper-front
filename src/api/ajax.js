@@ -42,3 +42,22 @@ function appendUrlWhileGET(url,params){
     //console.log(url);
     return url;
 }
+
+/**
+ * 
+ * @param {string} url 
+ * @param {FormData} formdata 
+ */
+export function ajaxFile(url,formdata){
+    return new Promise(function(resolve,reject){
+        fetch(url,{
+            method: 'POST',
+            body: formdata}
+        ).then(response=>{
+            response.json();
+        }).then(data=>{
+            console.log(data);
+            resolve(data);
+        })
+    })
+}

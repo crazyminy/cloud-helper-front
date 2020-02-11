@@ -1,0 +1,50 @@
+@ipi_width : 150px;
+@ipi_text_height : 30px;
+
+.ipi_root{
+    margin:15px;
+    width: @ipi_width;
+    height: @ipi_width+@ipi_text_height;
+    
+    .img_area{
+        position: relative;
+        border-radius: 5px;
+        border: 1px grey solid;
+        width: @ipi_width;
+        height: @ipi_width;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .fixRightTop{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border: 20px solid;
+            border-color: rgb(75, 75, 75)  rgb(75, 75, 75) transparent transparent;
+        }
+        .fixRightTopIcon{
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 20px;
+            color: white;
+        }
+        .listenW{
+            width: 95%;
+        }
+        .listenH{
+            height: 95%;
+        }
+    }
+    .text_area{
+        width:@ipi_width;
+        height: @ipi_text_height;
+        line-height: @ipi_text_height;
+        text-align: center;
+        overflow: hidden;//超长隐藏 
+        white-space: nowrap;//不换行 
+        text-overflow: ellipsis;
+    }
+}
