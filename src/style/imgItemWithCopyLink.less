@@ -1,0 +1,30 @@
+@iiwcl_width : 160px;
+@iiwcl_text_height : 30px;
+
+.iiwcl_root{
+    margin:15px;
+    width: @iiwcl_width;
+    height: @iiwcl_width+@iiwcl_text_height;
+    
+    .img_area{
+        position: relative;
+        border-radius: 5px;
+        border: 1px grey solid;
+        width: @iiwcl_width;
+        height: @iiwcl_width;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .text_area{
+        margin-top: 15px;
+        width:@iiwcl_width;
+        height: @iiwcl_text_height;
+        line-height: @iiwcl_text_height;
+        text-align: center;
+        // overflow: hidden;//超长隐藏 
+        white-space: nowrap;//不换行 
+        // text-overflow: ellipsis;
+    }
+}

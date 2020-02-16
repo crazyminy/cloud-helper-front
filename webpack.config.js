@@ -2,11 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const webpackConfig = {
     entry: './src/index.js',
-    mode:"development",
+    mode:"production",
     module: {
         rules: [
             {
@@ -56,6 +56,9 @@ const webpackConfig = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new CopyWebpackPlugin([
+            {from:'favicon.ico'}
+        ]),
         new HtmlWebpackPlugin({
             template:"./index.html"
         })

@@ -34,7 +34,7 @@ export default function Home(){
 
                
             </Content>
-            <Footer className="page_footer">Footer</Footer>
+            <Footer className="page_footer">developed by crazyminy 2019-2020</Footer>
         </Layout>
     );
 }

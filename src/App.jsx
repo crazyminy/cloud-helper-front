@@ -2,17 +2,20 @@ import React from 'react';
 import {
     HashRouter as Router, Switch, Route
 } from 'react-router-dom'
-import Login from './pages/Login';
-import Home from './pages/Home';
-import ImgBed from './pages/ImgBed';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import RouterGuard from './components/RouterGuard';
+
+
 export default function App(){
     return (
-        <Router>
-            <Switch>
-                <Route path="/home" component={Home}></Route>
-                <Route path="/imgBed" component={ImgBed}></Route>
-                <Route path="/" component={Login}></Route>
-            </Switch>
-        </Router>
+        <Provider store={store}>
+            <Router>
+                <Switch>
+                    <RouterGuard/>
+                </Switch>
+            </Router>
+        </Provider>
+        
     );
 }

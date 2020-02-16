@@ -1,9 +1,16 @@
+import { message } from "antd";
+
 export function ajax(url, data,_method = "GET") {
 
-    if(_method==="GET"){
+    if(_method==="GET"&&data!==null){
         url = appendUrlWhileGET(url,data);
     }
-
+    let isLogin = sessionStorage.getItem("isLogin")==="true";
+    let [token,preCode] = [undefined,undefined];
+    if(isLogin){
+        token = sessionStorage.getItem("token");
+        preCode = sessionStorage.getItem("lastValidateTime")+"salt"
+    }
     // Default options are marked with *
     return fetch(url, {
       body: _method==="GET"?null:JSON.stringify(data), // must match 'Content-Type' header
@@ -11,12 +18,24 @@ export function ajax(url, data,_method = "GET") {
       //credentials: 'same-origin', // include, same-origin, *omit
       headers: {
         'content-type': 'application/json',
-        "Authentication":"fjaiefj-ferge8453535-jg84h8yj58y"
+        "Authentication": isLogin?preCode+"&"+token:"",
       },
       method: _method, // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, cors, *same-origin
     })
     .then(response => response.json()) // parses response to JSON
+    .then(res=>{
+        try{
+            if(res.msg!=="success"){
+                message.error("服务器异常");
+            }else{
+                return res.data;
+            }
+        }catch(e){
+            message.error("服务器异常");
+            console.error(e);
+        }
+    });
 }
 
 function appendUrlWhileGET(url,params){
@@ -49,15 +68,17 @@ function appendUrlWhileGET(url,params){
  * @param {FormData} formdata 
  */
 export function ajaxFile(url,formdata){
-    return new Promise(function(resolve,reject){
-        fetch(url,{
-            method: 'POST',
-            body: formdata}
-        ).then(response=>{
-            response.json();
-        }).then(data=>{
-            console.log(data);
-            resolve(data);
-        })
-    })
+    let isLogin = sessionStorage.getItem("isLogin")==="true";
+    let [token,preCode] = [undefined,undefined];
+    if(isLogin){
+        token = sessionStorage.getItem("token");
+        preCode = sessionStorage.getItem("lastValidateTime")+"salt"
+    }
+    return fetch(url,{
+        method: 'POST',
+        headers:{
+            "Authentication": isLogin?preCode+"&"+token:""
+        },
+        body: formdata
+    }).then(response=>response.json())
 }
