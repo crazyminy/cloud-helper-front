@@ -1,12 +1,13 @@
-.page_root{
+.page_root {
     height: 100vh;
-    
-    .page_body{
+
+    .page_body {
         //overflow-y: auto;
         //height: 89%;
         width: 100%;
         padding: 15px 40px;
         position: relative;
+
         // .flex_box_vertical_center{
         //     width: 100%;
         //     height: 100%;
@@ -15,27 +16,50 @@
         //     justify-content: start;
         //     align-items: center;
         // }
-        .opsArea{
-            
-        }
-        .imgsArea{
+        .opsArea {}
+
+        .imgsArea {
             box-sizing: border-box;
-            height: 100%;
+            height: 95%;
             margin-top: 15px;
             padding: 0 50px;
             overflow: hidden;
             display: flex;
             flex-wrap: wrap;
             justify-content: start;
+            overflow: auto;
+
+            
         }
     }
-    
+
 }
 
-.ipv_div{
+.ipv_div {
     width: 900px;
     height: 400px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+
+::-webkit-scrollbar {
+    width: .5rem;
+    height: .5rem;
+    background: hsla(0, 0%, 100%, 0.6);
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: rgba(95, 95, 95, .4);
+    transition: all .2s;
+    border-radius: .5rem;
+
+    &:hover {
+        background-color: rgba(95, 95, 95, .7);
+    }
 }
